@@ -1,5 +1,5 @@
 import NextAuth from "next-auth";
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import authConfig from "./auth.config";
 import { AuthPrefix, AuthRoutes, PublicRoute } from "./route";
 
@@ -13,22 +13,20 @@ export default auth((req) => {
   const isAuthRoute = AuthRoutes.includes(nextUrl.pathname);
   const isPublicRoute = PublicRoute.includes(nextUrl.pathname);
 
-  // if (isApiAuthRoute) {
-  //   return NextResponse.next();
-  // }
+  if (isApiAuthRoute) {
+    return NextResponse.next();
+  }
 
-  // if (isAuthRoute) {
-  //   if (isLogin) {
-  //     return Response.redirect(new URL("/home", nextUrl));
-  //   }
-  //   return NextResponse.next();
-  // }
+  if (isAuthRoute) {
+    if (isLogin) {
+      return Response.redirect(new URL("/home", nextUrl));
+    }
+    return NextResponse.next();
+  }
 
-  // if (!isLogin && !isPublicRoute) {
-  //   return Response.redirect(new URL("/login", nextUrl));
-  // }
-
-  console.log("this is login", isLogin);
+  if (!isLogin && !isPublicRoute) {
+    return Response.redirect(new URL("/login", nextUrl));
+  }
 
   return NextResponse.next();
 });
