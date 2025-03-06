@@ -2,7 +2,6 @@
 
 // https://api.themoviedb.org/3/trending/movie/day?language=en-US
 
-
 const API_BASE_URL = "https://api.themoviedb.org";
 const TMDB_API_KEY = process.env.TMDB_API_KEY;
 
@@ -23,6 +22,7 @@ export const GetTrendingMovies = async () => {
     }
 
     const data = await response.json();
+
     return data;
   } catch (error) {
     console.error("Error fetching movies data:", error);
