@@ -11,8 +11,8 @@ import {
 } from "@/components/ui/carousel";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState, useCallback } from "react";
-import { Button } from "../ui/button";
 import Link from "next/link";
+import Image from "next/image";
 
 type Movie = {
   backdrop_path: string;
@@ -66,38 +66,51 @@ const TrendingCarousel = () => {
     return <p>Error loading trending movies.</p>;
   }
 
-  const movies: Movie[] = data?.results || [];
-
   return (
     <section className="relative w-full">
-      <Carousel
-        opts={{
-          align: "start",
-          loop: true,
-        }}
-        setApi={setCarouselApi}
-      >
+      <Carousel opts={{ align: "start", loop: true }} setApi={setCarouselApi}>
         <CarouselContent>
-          {movies.map((movie) => {
-            return (
-              <CarouselItem
-                key={movie.id}
-                className="relative max-w-full max-h-[50vh]   md:max-h-[85vh]"
-              >
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          {data?.results.map((movie: Movie) => (
+            <CarouselItem
+              key={movie.id}
+              className="relative w-full h-[70vh] flex-shrink-0"
+            >
+              <div className="relative w-full h-full">
+                <Image
+                  src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                   alt={movie.title}
-                  className="w-full brightness-80 h-full object-fill  md:object-fill "
+                  fill
+                  className="object-cover object-center"
                 />
-                <div className="absolute z-10  bottom-0">
-                  <Button variant={"outline"} asChild>
-                    <Link href={`/watch/${movie.id}`}>Watch Now</Link>
-                  </Button>
+                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
+
+                <div className="absolute bottom-10 left-10 text-white max-w-xl z-10">
+                  <h1 className="text-5xl font-extrabold mb-4 drop-shadow-lg">
+                    {movie.title}
+                  </h1>
+                  <p className="text-base mb-6 line-clamp-3 drop-shadow-lg">
+                    {movie.overview}
+                  </p>
+                  <div className="flex items-center space-x-4">
+                    <Link
+                      href={`/watch/${movie.id}`}
+                      className="bg-white text-black px-6 py-3 rounded-md font-semibold flex items-center justify-center transition hover:opacity-80"
+                    >
+                      Play
+                    </Link>
+                    <Link
+                      href={`/details/${movie.id}`}
+                      className="bg-gray-600 bg-opacity-80 text-white px-6 py-3 rounded-md font-semibold flex items-center justify-center transition hover:bg-gray-500"
+                    >
+                      More Info
+                    </Link>
+                  </div>
                 </div>
-              </CarouselItem>
-            );
-          })}
+              </div>
+            </CarouselItem>
+          ))}
         </CarouselContent>
+
         <div className="absolute bottom-[-30px] right-1/2 flex items-center space-x-2">
           <CarouselPrevious />
           <div className="text-center text-sm text-muted-foreground">

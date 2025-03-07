@@ -5,7 +5,10 @@ import type { NextAuthConfig } from "next-auth";
 
 export default {
   providers: [
-    GitHub,
+    GitHub({
+      clientId: process.env.Auth_Github_Id,
+      clientSecret: process.env.Auth_Github_Secret,
+    }),
     Google({
       clientId: process.env.AUTH_GOOGLE_ID,
       clientSecret: process.env.AUTH_GOOGLE_SECRET,
