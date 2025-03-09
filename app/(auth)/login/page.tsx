@@ -33,7 +33,7 @@ const LoginPage = () => {
               <GoogleIcon className="mr-2 h-4 w-4" />
               Sign in with Google
             </Button>
-            <Button variant="outline" className="w-full" >
+            <Button onClick={()=> handleSignIn("github")} variant="outline" className="w-full" >
               <AppleIcon className="mr-2 h-4 w-4" />
               Sign in with Apple
             </Button>
