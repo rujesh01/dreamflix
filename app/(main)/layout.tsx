@@ -1,3 +1,4 @@
+import Navbar from "@/components/GlobalNavbar/navbar";
 import React from "react";
 
 type props = {
@@ -7,7 +8,7 @@ type props = {
 const MainLayout = ({children}: props) => {
     return ( 
         <div>
-            <nav>nav bar</nav>
+            <Navbar/>
             
             {children}
         </div>

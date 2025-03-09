@@ -73,22 +73,22 @@ const TrendingCarousel = () => {
           {data?.results.map((movie: Movie) => (
             <CarouselItem
               key={movie.id}
-              className="relative w-full h-[70vh] flex-shrink-0"
+              className="relative w-full h-[40vh] sm:h-[60vh] border-b-2 flex-shrink-0"
             >
               <div className="relative w-full h-full">
                 <Image
                   src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
                   alt={movie.title}
                   fill
-                  className="object-cover object-center"
+                  className="object-fill "
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
+                <div className="absolute  inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
 
-                <div className="absolute bottom-10 left-10 text-white max-w-xl z-10">
-                  <h1 className="text-5xl font-extrabold mb-4 drop-shadow-lg">
+                <div className="absolute  bottom-10 left-10 text-white max-w-xl z-10">
+                  <h1 className=" text-3xl md:text-5xl font-extrabold mb-4 drop-shadow-lg">
                     {movie.title}
                   </h1>
-                  <p className="text-base mb-6 line-clamp-3 drop-shadow-lg">
+                  <p className=" text-xs md:text-base mb-6 line-clamp-3 drop-shadow-lg">
                     {movie.overview}
                   </p>
                   <div className="flex items-center space-x-4">
