@@ -13,6 +13,8 @@ const PlayerPage = async ({ params }: props) => {
         className="w-screen min-h-[500px] border-0"
         allowFullScreen
       ></iframe>
+
+      <h1>this is watch page</h1>
     </>
   );
 };
