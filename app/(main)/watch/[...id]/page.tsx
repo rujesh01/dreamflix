@@ -98,7 +98,7 @@ const PlayerPage = ({ params }: Props) => {
       <div className="provider-selection mt-4">
         <label
           htmlFor="provider-select"
-          className="block mb-2 text-sm font-medium text-gray-700"
+          className="block mb-2 text-sm font-medium text-gray-400"
         >
           Select a provider:
         </label>
