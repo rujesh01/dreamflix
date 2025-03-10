@@ -106,7 +106,7 @@ const PlayerPage = ({ params }: Props) => {
           {availableSources.map((source) => (
             <button
               key={source.id}
-              className={`p-2 border rounded-md ${
+              className={`p-2 border rounded-md cursor-pointer ${
                 selectedProvider.id === source.id
                   ? "bg-purple-600 text-white"
                   : "bg-gray-500 text-black"
