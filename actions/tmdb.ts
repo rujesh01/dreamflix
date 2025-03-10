@@ -1,3 +1,4 @@
+"use server";
 export const addToFavorites = async (media_id: number, favorite: boolean) => {
     const TMDB_API_URL = `https://api.themoviedb.org/3/account/21870866/favorite`;
 

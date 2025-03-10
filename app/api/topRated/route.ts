@@ -7,7 +7,7 @@ export async function GET(req: Request) {
         authMiddleware(req);
 
         const url = new URL(req.url);
-        const page = Number(url.searchParams.get("page")) || 1; // Get page number
+        const page = Number(url.searchParams.get("page")) || 1; 
 
         const movies = await getTopRatedMovies(page);
         return NextResponse.json(movies, { status: 200 });
