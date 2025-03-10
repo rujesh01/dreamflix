@@ -1,9 +1,9 @@
 "use client";
 
-import clsx from "clsx";
 import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { GetMovieDetailsById } from "../../../../actions/GetMovies";
+import availableSources from "../../../../actions/avilableResources";
 
 type MovieDetails = {
   title: string;
@@ -19,6 +19,7 @@ type Props = {
 
 const PlayerPage = ({ params }: Props) => {
   const [id, setId] = useState<string | null>(null);
+  const [selectedProvider, setSelectedProvider] = useState(availableSources[0]);
 
   useEffect(() => {
     const fetchParams = async () => {
@@ -55,31 +56,66 @@ const PlayerPage = ({ params }: Props) => {
     ratings: `${data.vote_average} (${data.vote_count} votes)`,
   };
 
+  const handleProviderChange = (providerId: string) => {
+    const provider = availableSources.find(
+      (source) => source.id === providerId
+    );
+    if (provider) {
+      setSelectedProvider(provider);
+    }
+  };
+
+  const movieUrl = selectedProvider.urls.movie.replace("{id}", id as string);
+
   return (
     <div className="container mx-auto p-4">
       <div className="video-container mb-8">
         <iframe
-          src={`https://vidsrc.cc/v2/embed/movie/${id}?autoPlay=false`}
+          src={movieUrl}
           className="w-full h-96 border-0"
           allowFullScreen
         ></iframe>
       </div>
 
-      <div className="movie-details  p-6 rounded-lg shadow-lg  text-gray-500">
-        <h1 className="text-3xl font-bold mb-4 text-gray-500">
+      <div className="movie-details  p-6 rounded-lg shadow-lg">
+        <h1 className="text-3xl font-bold mb-4 text-gray-700">
           {movieDetails.title}
         </h1>
-        <p className=" mb-4">{movieDetails.description}</p>
+        <p className="text-gray-700 mb-4">{movieDetails.description}</p>
         <div className="flex flex-wrap gap-4">
-          <p className="">
+          <p className="text-gray-600">
             <strong>Length:</strong> {movieDetails.length}
           </p>
-          <p className="">
+          <p className="text-gray-600">
             <strong>Genre:</strong> {movieDetails.genre}
           </p>
-          <p className="">
+          <p className="text-gray-600">
             <strong>Ratings:</strong> {movieDetails.ratings}
           </p>
+        </div>
+      </div>
+
+      <div className="provider-selection mt-4">
+        <label
+          htmlFor="provider-select"
+          className="block mb-2 text-sm font-medium text-gray-700"
+        >
+          Select a provider:
+        </label>
+        <div className="flex flex-wrap gap-2">
+          {availableSources.map((source) => (
+            <button
+              key={source.id}
+              className={`p-2 border rounded-md ${
+                selectedProvider.id === source.id
+                  ? "bg-purple-600 text-white"
+                  : "bg-gray-500 text-black"
+              }`}
+              onClick={() => handleProviderChange(source.id)}
+            >
+              {source.name}
+            </button>
+          ))}
         </div>
       </div>
     </div>
