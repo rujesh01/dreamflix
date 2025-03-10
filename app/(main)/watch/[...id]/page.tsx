@@ -77,19 +77,19 @@ const PlayerPage = ({ params }: Props) => {
         ></iframe>
       </div>
 
-      <div className="movie-details  p-6 rounded-lg shadow-lg">
+      <div className="movie-details  p-6 rounded-lg shadow-lg text-gray-400">
         <h1 className="text-3xl font-bold mb-4 text-gray-700">
           {movieDetails.title}
         </h1>
-        <p className="text-gray-700 mb-4">{movieDetails.description}</p>
+        <p className=" mb-4">{movieDetails.description}</p>
         <div className="flex flex-wrap gap-4">
-          <p className="text-gray-600">
+          <p className="">
             <strong>Length:</strong> {movieDetails.length}
           </p>
-          <p className="text-gray-600">
+          <p className="">
             <strong>Genre:</strong> {movieDetails.genre}
           </p>
-          <p className="text-gray-600">
+          <p className="">
             <strong>Ratings:</strong> {movieDetails.ratings}
           </p>
         </div>
