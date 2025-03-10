@@ -5,7 +5,7 @@ import { FavoriteRequest } from "@/app/types/favorite";
 
 export async function POST(req: Request) {
     try {
-        authMiddleware(req); // Check if token exists
+        authMiddleware(req); 
 
         const body: FavoriteRequest = await req.json();
         const { movieId, favorite } = body;

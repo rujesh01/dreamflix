@@ -5,13 +5,13 @@ export const addToFavorites = async (movieId: number, favorite: boolean) => {
         const response = await fetch(TMDB_API_URL, {
             method: "POST",
             headers: {
-                Authorization: `Bearer ${process.env.TMDB_ACCESS_TOKEN}`, // Store token in .env.local
+                Authorization: `Bearer ${process.env.TMDB_API_KEY}`, 
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
                 media_type: "movie",
                 media_id: movieId,
-                favorite: favorite, // true to add, false to remove
+                favorite: favorite, 
             }),
         });
 
