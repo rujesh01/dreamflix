@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import { addToFavorites } from "@/app/utils/tmdb";
-import { authMiddleware } from "@/app/utils/authMiddleware";
+import { addToFavorites } from "@/actions/tmdb";
+import { authMiddleware } from "@/actions/authMiddleware";
 import { FavoriteRequest } from "@/app/types/favorite";
 
 export async function POST(req: Request) {
