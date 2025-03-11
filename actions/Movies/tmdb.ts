@@ -69,3 +69,18 @@ export const getTopRatedMovies = async (page: number = 1) => {
     }
 };
 
+
+
+//Movies details
+
+export const getMovieDetails = async (movieId: string) => {
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${process.env.TMDB_API_KEY}`,
+            "Content-Type": "application/json",
+        },
+    });
+
+    return response.json();
+};
