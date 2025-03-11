@@ -102,3 +102,35 @@ export const updateWatchlist = async (mediaId: number, mediaType: "movie" | "tv"
 
     return response.json();
 };
+
+// Watch List Movies View
+export const getWatchlistMovies = async (page: number) => {
+    const response = await fetch(
+        `https://api.themoviedb.org/3/account/21870866/watchlist/movies?language=en-US&page=${page}&sort_by=created_at.asc`,
+        {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${process.env.TMDB_API_KEY}`,
+                "Accept": "application/json",
+            },
+        }
+    );
+
+    return response.json();
+};
+
+// Discover Movies 
+export const discoverMovies = async (page: number) => {
+    const response = await fetch(
+        `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`,
+        {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
+                "Accept": "application/json",
+            },
+        }
+    );
+
+    return response.json();
+};
