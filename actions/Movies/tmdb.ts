@@ -84,3 +84,21 @@ export const getMovieDetails = async (movieId: string) => {
 
     return response.json();
 };
+
+//Watch List 
+export const updateWatchlist = async (mediaId: number, mediaType: "movie" | "tv", watchlist: boolean) => {
+    const response = await fetch(`https://api.themoviedb.org/3/account/21870866/watchlist`, {
+        method: "POST",
+        headers: {
+            "Authorization": `Bearer ${process.env.TMDB_API_KEY}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            media_type: mediaType,
+            media_id: mediaId,
+            watchlist,
+        }),
+    });
+
+    return response.json();
+};
