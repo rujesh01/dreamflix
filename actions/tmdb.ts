@@ -30,6 +30,22 @@ export const addToFavorites = async (media_id: number, favorite: boolean) => {
 };
 
 
+// Watch Favroite Movies
+
+
+export const getFavoriteMovies = async (page: number) => {
+    const response = await fetch(`https://api.themoviedb.org/3/account/21870866/favorite/movies?language=en-US&page=${page}&sort_by=created_at.asc`, {
+        method: "GET",
+        headers: {
+            "Authorization": `Bearer ${process.env.TMDB_API_KEY}`,
+            "Content-Type": "application/json",
+        },
+    });
+
+    return response.json();
+};
+
+
 // Get TOp Rated MOvies 
 export const getTopRatedMovies = async (page: number = 1) => {
     const TMDB_API_URL = `https://api.themoviedb.org/3/account/21870866/rated/movies?language=en-US&page=${page}&sort_by=created_at.asc`;
