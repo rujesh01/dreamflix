@@ -12,7 +12,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { AppleIcon, GoogleIcon } from "@/components/icons/auth-icons";
-import { handleSignIn } from "@/actions/users";
+import { handleSignIn } from "@/actions/auth/users";
 const LoginPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
 

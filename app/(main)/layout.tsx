@@ -1,13 +1,15 @@
-import Navbar from "@/components/GlobalNavbar/navbar";
+
+import Navbar from "@/components/global/navbar/navbar";
 import React from "react";
 
 type props = {
-    children: React.ReactNode
-}
+  children: React.ReactNode;
+};
 
 const MainLayout = ({children}: props) => {
     return ( 
         <div>
+            {/* <Navbar/> */}
             <Navbar/>
             
             {children}

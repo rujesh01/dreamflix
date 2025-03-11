@@ -1,5 +1,8 @@
 "use server";
 
+
+// https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1
+
 // https://api.themoviedb.org/3/trending/movie/day?language=en-US
 
 const API_BASE_URL = "https://api.themoviedb.org";
