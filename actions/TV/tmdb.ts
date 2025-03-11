@@ -30,3 +30,20 @@ export const discoverTVShows = async (page: number) => {
 
     return response.json();
 };
+
+// GENRES TV List 
+
+export const  genresTVlist = async (page: number) => {
+    const response = await fetch(
+        'https://api.themoviedb.org/3/genre/tv/list?language=en',
+        {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
+                "Accept": "application/json",
+            },
+        }
+    );
+
+    return response.json();
+};
