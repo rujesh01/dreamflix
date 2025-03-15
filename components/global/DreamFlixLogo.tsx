@@ -1,15 +1,15 @@
+import Link from "next/link";
+
 const DreamFlixLogo = () => {
-    return (
-      <div className="flex items-center">
-        <span
-          className="text-4xl font-extrabold tracking-wide bg-clip-text text-transparent 
-                     bg-gradient-to-r from-[#FF5F6D] to-[#FFC371] dark:from-[#FFC371] dark:to-[#FF5F6D]"
-        >
+  return (
+    <Link href={"/home"}>
+      <div className="flex items-center space-x-2">
+        <span className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold text-destructive-foreground">
           DreamFlix
         </span>
       </div>
-    );
-  };
-  
-  export default DreamFlixLogo;
-  
+    </Link>
+  );
+};
+
+export default DreamFlixLogo;

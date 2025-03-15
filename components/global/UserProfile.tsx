@@ -22,11 +22,13 @@ const UserDropDown = async () => {
           <AvatarFallback>CN</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent>
+      <DropdownMenuContent className="w-[300px]">
         <DropdownMenuLabel>{session?.user?.name}</DropdownMenuLabel>
         <DropdownMenuSeparator />
+        <DropdownMenuItem>Billing</DropdownMenuItem>
+        <DropdownMenuItem>Billing</DropdownMenuItem>
         <DropdownMenuItem>
-          <ThemeToggleSwitch/>
+          <ThemeToggleSwitch />
         </DropdownMenuItem>
         {/* <DropdownMenuItem>Billing</DropdownMenuItem>
         <DropdownMenuItem>Team</DropdownMenuItem>

@@ -13,6 +13,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { Skeleton } from "../ui/skeleton";
 
 type Movie = {
   backdrop_path: string;
@@ -59,7 +60,35 @@ const TrendingCarousel = () => {
   });
 
   if (isLoading) {
-    return <p>Loading trending movies...</p>;
+    return (
+      <section className="relative w-full">
+        <Carousel opts={{ align: "start", loop: true }} setApi={setCarouselApi}>
+          <CarouselContent>
+            {Array(5)
+              .fill(0)
+              .map((_, idx) => (
+                <CarouselItem
+                  key={idx}
+                  className="relative w-full h-[40vh] sm:h-[50vh] border-b-2 flex-shrink-0"
+                >
+                  <div className="relative w-full h-full">
+                    <Skeleton className="w-full h-full" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-background to-transparent" />
+                    <div className="absolute bottom-10 left-10 text-white max-w-xl z-10">
+                      <Skeleton className="w-3/4 h-8 mb-4" />
+                      <Skeleton className="w-full h-6 mb-6" />
+                      <div className="flex items-center space-x-4">
+                        <Skeleton className="w-20 h-10" />
+                        <Skeleton className="w-20 h-10" />
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+              ))}
+          </CarouselContent>
+        </Carousel>
+      </section>
+    );
   }
 
   if (isError) {
@@ -73,7 +102,7 @@ const TrendingCarousel = () => {
           {data?.results.map((movie: Movie) => (
             <CarouselItem
               key={movie.id}
-              className="relative w-full h-[40vh] sm:h-[60vh] border-b-2 flex-shrink-0"
+              className="relative w-full h-[30vh] sm:h-[60vh] border-b-2 flex-shrink-0"
             >
               <div className="relative w-full h-full">
                 <Image
@@ -82,7 +111,7 @@ const TrendingCarousel = () => {
                   fill
                   className="object-fill "
                 />
-                <div className="absolute  inset-0 bg-gradient-to-r from-black via-black/60 to-transparent" />
+                <div className="absolute  inset-0 bg-gradient-to-r from-black/60 to-transparent" />
 
                 <div className="absolute  bottom-10 left-10 text-white max-w-xl z-10">
                   <h1 className=" text-3xl md:text-5xl font-extrabold mb-4 drop-shadow-lg">

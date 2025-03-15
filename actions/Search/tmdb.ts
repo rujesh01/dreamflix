@@ -1,5 +1,5 @@
 "use server"
-// Seach Movies 
+// Search Movies 
 export const searchMovies = async (query: string, page: number) => {
     const response = await fetch(`https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=en-US&page=${page}`, {
         method: "GET",

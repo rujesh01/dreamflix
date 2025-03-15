@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 
 const LogOutButton = () => {
   const handleLogout = async () => {
-    await LogOut(); // Calls the server function properly
+    await LogOut(); 
   };
   return (
     <div>

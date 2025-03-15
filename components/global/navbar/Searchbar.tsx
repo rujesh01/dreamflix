@@ -1,9 +1,13 @@
 import { Input } from "@/components/ui/input";
+import { SearchIcon } from "lucide-react";
 
 const SearchBar = () => {
   return (
     <div>
-      <Input type="text" placeholder="Search......" />
+      <Input
+        placeholder="Search....."
+        className="w-full"
+      />
     </div>
   );
 };
