@@ -1,6 +1,5 @@
 "use server";
 
-
 // https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1
 
 // https://api.themoviedb.org/3/trending/movie/day?language=en-US
@@ -19,13 +18,10 @@ export const GetTrendingMovies = async () => {
         Authorization: `Bearer ${TMDB_API_KEY}`,
       },
     });
-
     if (!response.ok) {
       throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
-
     const data = await response.json();
-
     return data;
   } catch (error) {
     console.error("Error fetching movies data:", error);
@@ -50,7 +46,6 @@ export const GetMovieDetailsById = async (id: string) => {
     }
 
     const data = await response.json();
-    console.log(data);
 
     return data;
   } catch (error) {

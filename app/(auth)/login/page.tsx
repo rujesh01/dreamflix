@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
@@ -13,9 +12,8 @@ import {
 } from "@/components/ui/card";
 import { AppleIcon, GoogleIcon } from "@/components/icons/auth-icons";
 import { handleSignIn } from "@/actions/auth/users";
-const LoginPage = () => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
 
+const LoginPage = () => {
   return (
     <div>
       <Card className="w-full max-w-md">
@@ -29,11 +27,19 @@ const LoginPage = () => {
         </CardHeader>
         <CardContent className="pt-6">
           <div className="space-y-4">
-            <Button variant="outline" className="w-full" onClick={()=> handleSignIn("google")} >
+            <Button
+              variant="outline"
+              className="w-full"
+              onClick={() => handleSignIn("google")}
+            >
               <GoogleIcon className="mr-2 h-4 w-4" />
               Sign in with Google
             </Button>
-            <Button onClick={()=> handleSignIn("github")} variant="outline" className="w-full" >
+            <Button
+              onClick={() => handleSignIn("github")}
+              variant="outline"
+              className="w-full"
+            >
               <AppleIcon className="mr-2 h-4 w-4" />
               Sign in with Apple
             </Button>
@@ -41,7 +47,7 @@ const LoginPage = () => {
         </CardContent>
         <CardFooter className="flex flex-col space-y-4 pt-0">
           <div className="text-center text-sm">
-            Don't have an account?{" "}
+            Don&apos;t have an account?
             <Link
               href="/sign-up"
               className="font-medium text-primary hover:underline"
