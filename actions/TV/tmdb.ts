@@ -47,3 +47,19 @@ export const  genresTVlist = async (page: number) => {
 
     return response.json();
 };
+
+// Treniding TV List 
+export const  trenidingTvlist = async () => {
+    const response = await fetch(
+        'https://api.themoviedb.org/3/trending/tv/day?language=en-US',
+        {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
+                "Accept": "application/json",
+            },
+        }
+    );
+
+    return response.json();
+};

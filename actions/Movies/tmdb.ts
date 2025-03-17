@@ -152,3 +152,21 @@ export const  genresMovieslist = async (page: number) => {
 
     return response.json();
 };
+
+// Trending Movie List 
+
+
+export const  trenidingMovieslist = async () => {
+    const response = await fetch(
+        'https://api.themoviedb.org/3/trending/movie/day?language=en-US',
+        {
+            method: "GET",
+            headers: {
+                "Authorization": `Bearer ${process.env.TMDB_ACCESS_TOKEN}`,
+                "Accept": "application/json",
+            },
+        }
+    );
+
+    return response.json();
+};
